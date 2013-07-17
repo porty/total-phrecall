@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Verdana, Tahoma;
+}
+
+.card {
+	float: left;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	border-radius: 5px;
+	margin: 4px;
+	padding: 0;
+}
+
+.deck {
+	width: 628px;
+}
