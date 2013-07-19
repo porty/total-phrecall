@@ -11,7 +11,7 @@
 	<head>
 		<title>Total Recall PHP + Facebook Example</title>
 		<link href="css/main.css" rel="stylesheet" type="text/css"/>
-		<script src="js/jquery-2.0.3.min.js" type="text/javascript"/>
+		<script src="js/jquery-2.0.3.min.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="deck">
