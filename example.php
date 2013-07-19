@@ -14,15 +14,6 @@
 		<script src="js/jquery-2.0.3.min.js" type="text/javascript"/>
 	</head>
 	<body>
-		<audio id="tts"></audio>
-		<script>
-			var tts = document.getElementById("tts");
-		
-			function play(name) {
-				tts.src = "http://tts-api.com/tts.mp3?q=" + name;
-				tts.play();
-			}
-		</script>
 		<div class="deck">
 <?php
 
