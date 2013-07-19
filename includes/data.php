@@ -8,8 +8,6 @@
 	 */
 	class Data
 	{
-		private static $names = array('benny', 'bob', 'cohaagen', 'dr lull', 'ernie', 'george', 'helm', 'kuato', 'lori', 'melina', 'quaid', 'richter', 'secretary', 'three', 'tony');
-
 		/**
 		 * Get Friend objects to use. Friends are randomised and possibly limited
 		 * to 15. If you say you need x friends, you will receive an array of x * 2
