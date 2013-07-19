@@ -1,9 +1,9 @@
 <?php
 
 	require_once('includes/friend.php');
-	require_once('testing/fakedata.php');
+	require_once('includes/data.php');
 
-	$friends = FakeData::getFriends(15);
+	$friends = Data::getFriends(6 * 5 / 2);
 
 ?>
 <!DOCTYPE html>
