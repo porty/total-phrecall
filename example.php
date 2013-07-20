@@ -3,7 +3,7 @@
 	require_once('includes/friend.php');
 	require_once('includes/data.php');
 
-	$friends = Data::getFriends(6 * 5 / 2);
+	$friends = Data::getFriends(6 * 5 / 2, true);
 
 ?>
 <!DOCTYPE html>
