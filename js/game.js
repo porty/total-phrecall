@@ -164,15 +164,21 @@ Game.prototype.createDeck = function(game)
 		this.all_cards[i] = {'x': coord.x, 'y': coord.y, 'matched': false, 'div': div};
 	}
 
-	// create audio tags with preloaded content
+	// preload images/audio, creating audio elements for later
 	for (var i = 0; i < this.friends.length; ++i)
 	{
-		var audio = $("<audio>");
 		var friend = this.friends[i];
+
+		// audio
+		var audio = $("<audio>");
 		audio.attr("src", "http://tts-api.com/tts.mp3?q=" + friend.name);
 		audio.attr("preload", "auto");
 		this.container.append(audio);
 		this.audios[friend.name] = audio.get(0);
+
+		// images
+		var image = new Image();
+		image.src = friend.image;
 	}
 
 	var game = this;
