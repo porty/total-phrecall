@@ -280,3 +280,5 @@ Game.prototype.getFriendForValue = function(card_value)
 	return this.faces[card_value];
 };
 
+//Make this global
+window.Game = Game;
