@@ -59,7 +59,7 @@ function loadFriends()
 			var friend = {};
 			friend.name = response.data[i].name;
 			friend.image = 'https://graph.facebook.com/' + response.data[i].id
-					+ '/picture';
+					+ '/picture?type=normal';
 			friends.push(friend);
 		}
 
