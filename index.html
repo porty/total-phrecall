@@ -1,7 +1,61 @@
 <html>
 	<head>
+		<title>Rob's Total Recall Game Solutions</title>
+		<style>
+		@CHARSET "UTF-8";
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Verdana, Tahoma, Arial, sans-serif;
+}
+
+.card {
+	float: left;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	border-radius: 5px;
+	margin: 4px;
+	padding: 0;
+	background-size: cover;
+}
+
+.deck {
+	width: 648px;
+}
+
+.facedown {
+	background-color: black;
+}
+
+.eliminated {
+	visibility: hidden;
+}
+
+		</style>
 	</head>
 	<body>
-		<a href="example.php">Example</a>
+		<h1>Total Recall Memory Game</h1>
+		<div style="text-align: center;">
+			<p style="">Play your own game:</p>
+			<a href="facebook.html"><img src="images/facebook.png"/></a>
+			<a href="movie.html"><img src="images/total-recall-1990.png"/></a>
+		</div>
+		<h2>How to play:</h2>
+		<p>
+			You will start with all the cards face down. Pick corresponding
+			pairs of cards, attempting to match them. Once a pair is matched,
+			it will be eliminated. Once they are all eliminated, you win!
+		</p>
+		<h2>Source Github repositories</h2>
+		<ul>
+			<li><a href="https://github.com/porty/total-phrecall">This web site</a></li>
+			<li><a href="https://github.com/porty/demo-total-phrecall">This EC2 instance (outdated)</a></li>
+			<li style="text-decoration: line-through;"><a href="https://github.com/porty/python-totalrecall">Self-playing python script</a></li>
+		</ul>
 	</body>
 </html>
