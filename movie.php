@@ -14,8 +14,8 @@
 			var game = null;
 			$(function() {
 				game = new Game("#deck", friends);
-				//game.newGame("Rob", "robert.sean.mcneil@gmail.com");
-				game.resume("51ea23136924fe1e7bc9c78a");
+				game.newGame("Rob", "robert.sean.mcneil@gmail.com");
+				//game.resume("51ea23136924fe1e7bc9c78a");
 			});
 		</script>
 	</body>
