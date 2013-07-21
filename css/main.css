@@ -12,8 +12,17 @@ body {
 	border-radius: 5px;
 	margin: 4px;
 	padding: 0;
+	background-size: cover;
 }
 
 .deck {
 	width: 648px;
+}
+
+.facedown {
+	background-color: black;
+}
+
+.eliminated {
+	visibility: hidden;
 }
