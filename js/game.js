@@ -6,9 +6,10 @@
  * @param container The #ID of the container DOM object
  * @param friends Array of friend information
  */
-function Game(container, friends)
+function Game(container, friends, message_container)
 {
 	this.container = $(container);
+	this.message_container = $(message_container)
 	this.id = "";
 	this.width = -1;
 	this.height = -1;

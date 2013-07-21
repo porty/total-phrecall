@@ -80,7 +80,7 @@ function loadFriends()
 function startGame(friends)
 {
 	var game = null;
-	game = new Game("#deck", friends);
+	game = new Game("#deck", friends, "#message");
 	game.newGame("Rob", "robert.sean.mcneil@gmail.com");
 }
 
