@@ -147,13 +147,12 @@ Game.prototype.createDeck = function(game)
 	// create cards
 	for (var i = 0; i < count; ++i)
 	{
-		var x = i % this.width;
-		var y = Math.floor(i / this.width);
+		var coord = this.index2coord(i);
 
 		var div = $("<div>");
 		div.addClass("card");
 		div.addClass("facedown");
-		div.data("x", x).data("y", y);
+		div.data("x", coord.x).data("y", coord.y);
 		this.container.append(div);
 	}
 
@@ -280,6 +279,31 @@ Game.prototype.getFriendForValue = function(card_value)
 	}
 	return this.faces[card_value];
 };
+
+/**
+ * Converts an index to an x/y coord.
+ *
+ * @param i Index (0 <= i <= width * height)
+ * @returns {x: ..., y: ...}
+ */
+Game.prototype.index2coord = function(i)
+{
+	var x = i % this.width;
+	var y = Math.floor(i / this.width);
+	return {'x': x, 'y': y};
+}
+
+/**
+ * Converts x/y to an index. Opposite of index2coord().
+ *
+ * @param x The x coordinate
+ * @param y The y coordinate
+ * @returns The index
+ */
+Game.prototype.coord2index = function(x, y)
+{
+	return x + (y * this.width);
+}
 
 //Make this global
 window.Game = Game;
