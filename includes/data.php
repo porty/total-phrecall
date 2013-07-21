@@ -31,7 +31,8 @@
 			{
 				if (Misc::endsWith($entry, '.jpg'))
 				{
-					$names[] = pathinfo($entry)['filename'];
+					$pathinfo = pathinfo($entry);
+					$names[] = $pathinfo['filename'];
 				}
 			}
 
