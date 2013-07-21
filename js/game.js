@@ -229,13 +229,14 @@ Game.prototype.onGuess = function(x, y, card_value, div)
 	$(div).css({"background-image": "url('" + friend.image + "')"});
 	$(div).addClass("faceup").removeClass("facedown");
 	this.last_cards_matched = false;
+	var current_card = {"x": x, "y": y, "card_value": card_value, "div": div};
 
 	if (this.first_card == null)
 	{
 		// this is the first move in a pair
 		// save the information for later
 		console.log("This is the first card (of a pair) that is flipped");
-		this.first_card = {"x": x, "y": y, "card_value": card_value, "div": div};
+		this.first_card = current_card;
 	}
 	else
 	{
@@ -245,7 +246,7 @@ Game.prototype.onGuess = function(x, y, card_value, div)
 			// match!
 			console.log("Match :)");
 			div.onclick = null;
-			this.first_card.onclick = null;
+			//this.first_card.onclick = null;
 			this.last_cards_matched = true;
 		}
 		else
@@ -256,21 +257,14 @@ Game.prototype.onGuess = function(x, y, card_value, div)
 		}
 		this.first_card = null;
 	}
-
-	// TODO
-	//  assign friend to card (based on card value)
-	//  flip card, say name
-	//  if first card
-	//    save x/y/card_value to first_card
-	//  else (if second card)
-	//    if cards match (first_card == card_value)
-	//      some sort of success sound?
-	//      ensure cards can't be clicked (turn of onclick for both of the html elements)
-	//    else (if cards don't match)
-	//      ... nothing
-	//  busy = false (so that click() won't ignore the next attempt - we're not busy anymore)
 };
 
+/**
+ * Get the friend for the specified card value.
+ *
+ * @param card_value The card's value (string)
+ * @returns Friend object: { name: '...', image: '...' }
+ */
 Game.prototype.getFriendForValue = function(card_value)
 {
 	if (!this.faces.hasOwnProperty(card_value))
