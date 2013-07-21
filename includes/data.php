@@ -26,7 +26,7 @@
 			// get all file name (without .jpg ext) within the image directory
 			//$dir = dir('../images/' . $subject);
 			$dir = dir('images/' . $subject);
-			$names = [];
+			$names = array();
 			while (false !== ($entry = $dir->read()))
 			{
 				if (Misc::endsWith($entry, '.jpg'))
@@ -43,7 +43,7 @@
 			}
 
 			// return Friends
-			$ret = [];
+			$ret = array();
 			for ($i = 0; $i < $count; ++$i)
 			{
 				$name = $names[$i];
