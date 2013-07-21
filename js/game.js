@@ -22,6 +22,9 @@ function Game(container, friends, message_container)
 	this.faces = {};
 	this.audios = {};
 	this.last_cards_matched = false;
+
+	this.pairs_matched = 0;
+	this.all_cards = [];
 }
 
 /**
@@ -154,6 +157,8 @@ Game.prototype.createDeck = function(game)
 		div.addClass("facedown");
 		div.data("x", coord.x).data("y", coord.y);
 		this.container.append(div);
+
+		this.all_cards[i] = {'x': coord.x, 'y': coord.y, 'matched': false, 'div': div};
 	}
 
 	// create audio tags with preloaded content
@@ -248,6 +253,19 @@ Game.prototype.onGuess = function(x, y, card_value, div)
 			div.onclick = null;
 			//this.first_card.onclick = null;
 			this.last_cards_matched = true;
+
+			var index = this.coord2index(this.first_card.x, this.first_card.y);
+			this.all_cards[index].matched = true;
+			index = this.coord2index(x, y);
+			this.all_cards[index].matched = true;
+
+			// determine end condition
+			++this.pairs_matched;
+			if (this.pairs_matched == (this.all_cards.length / 2) - 1)
+			{
+				// woo at the end!
+				this.endGame();
+			}
 		}
 		else
 		{
@@ -272,6 +290,49 @@ Game.prototype.getFriendForValue = function(card_value)
 		this.faces[card_value] = this.friends.pop();
 	}
 	return this.faces[card_value];
+};
+
+/**
+ * Call the end-of-game REST method. This will submit the two unmatched cards
+ */
+Game.prototype.endGame = function()
+{
+	var remaining = [];
+	for (var i = 0; i < this.all_cards.length; ++i)
+	{
+		var card = this.all_cards[i];
+		if (!card.matched)
+		{
+			remaining.push(card);
+		}
+	}
+	var one = remaining.pop();
+	var two = remaining.pop();
+	console.log("Ending with these cards:");
+	console.dir(one);
+	console.dir(two);
+	// for help in callbacks below - the context breaks between callbacks
+	// I can't just set {context: this} as the fadeTo() context is still wrong
+	var game = this;
+	$.ajax({
+		url : this.baseurl + this.id + "/end",
+		type : "POST",
+		dataType : "json",
+		data : {"x1": one.x, "y1": one.y, "x2": two.x, "y2": two.y},
+		success : function(data) {
+			console.log("End game data:");
+			console.dir(data);
+			game.container.fadeTo(1000, 0.5, function() {
+				game.message_container.html(data.message);
+				// TODO: something depending on win or lose
+			})
+		},
+		error : function(data) {
+			console.log("Failed on call to end the game, details follow");
+			console.dir(data);
+			this.showError("Failed on call to end the game :(");
+		}
+	});
 };
 
 /**
