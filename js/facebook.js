@@ -41,7 +41,7 @@ function loadFacebook()
 function loadFriends()
 {
 	// remove the game button
-	$('.start-game').hide();
+	$('.start-game').val("Loading...").attr("disabled", "disabled");
 
 	FB.api('/me', function(response) {
 		// console.log(response);

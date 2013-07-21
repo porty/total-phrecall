@@ -147,6 +147,9 @@ Game.prototype.createDeck = function(game)
 	// will ensure that we don't preload more audio than we need
 	this.friends.length = count / 2;
 
+	// clear anything currently in the container
+	this.container.html("");
+
 	// create cards
 	for (var i = 0; i < count; ++i)
 	{
